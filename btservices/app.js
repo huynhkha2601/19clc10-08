@@ -22,6 +22,10 @@ app.get('/', (req, res) => {
     res.render('main');
 });
 
+app.get('/login', (req, res) => {
+    res.render('./vwAccounts/login',{layout : 'accounts.hbs'}) ;
+});
+
 app.get('/bs4', (req, res) =>{
     res.sendFile(__dirname + "/bs4.html");
 });
