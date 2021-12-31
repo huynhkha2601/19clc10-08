@@ -26,10 +26,7 @@ app.get('/login', (req, res) => {
     res.render('./vwAccounts/login',{layout : 'accounts.hbs'}) ;
 });
 
-app.get('/bs4', (req, res) =>{
-    res.sendFile(__dirname + "/bs4.html");
-});
-
+app.use('/public', express.static('public'));
 app.use(morgan('dev'));
 const port = 5000;
 app.listen(port, () => {
