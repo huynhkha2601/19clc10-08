@@ -30,8 +30,12 @@ app.get('/register', (req, res) => {
     res.render('./vwAccounts/register',{layout : 'accounts.hbs'}) ;
 });
 
-app.get('/details', (req, res) => {
+app.get('/Product', (req, res) => {
     res.render('./vwProducts/index',{layout : 'home.hbs'}) ;
+});
+
+app.get('/Product/detail', (req, res) => {
+    res.render('./vwProducts/details',{layout : 'home.hbs'}) ;
 });
 
 app.use('/public', express.static('public'));
