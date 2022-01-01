@@ -26,6 +26,10 @@ app.get('/login', (req, res) => {
     res.render('./vwAccounts/login',{layout : 'accounts.hbs'}) ;
 });
 
+app.get('/details', (req, res) => {
+    res.render('./vwProducts/index',{layout : 'home.hbs'}) ;
+});
+
 app.use('/public', express.static('public'));
 app.use(morgan('dev'));
 const port = 5000;
