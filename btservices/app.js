@@ -26,6 +26,10 @@ app.get('/login', (req, res) => {
     res.render('./vwAccounts/login',{layout : 'accounts.hbs'}) ;
 });
 
+app.get('/register', (req, res) => {
+    res.render('./vwAccounts/register',{layout : 'accounts.hbs'}) ;
+});
+
 app.get('/details', (req, res) => {
     res.render('./vwProducts/index',{layout : 'home.hbs'}) ;
 });
