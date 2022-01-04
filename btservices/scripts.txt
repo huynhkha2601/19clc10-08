@@ -4,10 +4,10 @@ create database bkts;
 
 use bkts;
 
-drop table if exists location;
-create table location(
-    lcid bigint primary key  AUTO_INCREMENT,
-    lcname varchar(50) COLLATE utf8_general_ci null
+drop table if exists cagetegory;
+create table category(
+    ctid bigint primary key  AUTO_INCREMENT,
+    ctname varchar(50) COLLATE utf8_general_ci null
 );
 
 drop table if exists review;

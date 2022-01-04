@@ -16,7 +16,7 @@ html,body{
 }
 
 .card{
-    height: 370px;
+    height: 435px;
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
@@ -40,8 +40,8 @@ html,body{
 
 .social_icon{
     position: absolute;
-    right: 20px;
-    top: -45px;
+    right: 100px;
+    top: 300px;
 }
 
 .input-group-prepend span{
@@ -70,7 +70,7 @@ input:focus{
 .login_btn{
     color: black;
     background-color: #FFC312;
-    width: 100px;
+    width: 175px;
 }
 
 .login_btn:hover{
