@@ -4,6 +4,9 @@ import sections from "express-handlebars-sections";
 import morgan from 'morgan';
 import {dirname} from 'path';
 import {fileURLToPath} from 'url';
+import active_middleware_route from "./middlewares/routes.mdw.js";
+
+
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -14,10 +17,7 @@ app.use(express.urlencoded({
     extended:true
 }));
 
-app.engine('hbs', engine({
-    defaultLayout:'home.hbs',
-}));
-
+app.use(morgan('dev'));
 app.engine('hbs', engine({
     defaultLayout: 'home.hbs',
     helpers: {
@@ -43,21 +43,12 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+
 app.get('/', (req, res) => {
     res.render('main');
 });
 
-app.get('/login', (req, res) => {
-    res.render('./vwAccounts/login',{layout : 'accounts.hbs'}) ;
-});
 
-app.get('/register', (req, res) => {
-    res.render('./vwAccounts/register',{layout : 'accounts.hbs'}) ;
-});
-
-app.get('/forget', (req, res) => {
-    res.render('./vwAccounts/forgetpw',{layout : 'accounts.hbs'}) ;
-});
 
 app.get('/Product', (req, res) => {
     res.render('./vwProducts/index',{layout : 'home.hbs'}) ;
@@ -66,6 +57,9 @@ app.get('/Product', (req, res) => {
 app.get('/Product/detail', (req, res) => {
     res.render('./vwProducts/details',{layout : 'home.hbs'}) ;
 });
+
+active_middleware_route(app);
+
 
 let port = process.env.PORT || 3000;
 app.listen(port, () => {
