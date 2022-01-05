@@ -44,17 +44,11 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 
-app.get('/', (req, res) => {
-    res.render('main');
-});
-
-
-app.get('/dashboard', (req, res) => {
-    res.render('main',{
-        layout: 'dashboard.hbs'
-    });
-});
-
+app.get('/dashboard/list', (req, res)=>{
+    res.render('vwAccounts/accounts-list', {
+        layout: 'dashboard.css'
+    })
+})
 
 
 app.get('/Product', (req, res) => {
