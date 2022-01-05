@@ -49,6 +49,13 @@ app.get('/', (req, res) => {
 });
 
 
+app.get('/dashboard', (req, res) => {
+    res.render('main',{
+        layout: 'dashboard.hbs'
+    });
+});
+
+
 
 app.get('/Product', (req, res) => {
     res.render('./vwProducts/index',{layout : 'home.hbs'}) ;
