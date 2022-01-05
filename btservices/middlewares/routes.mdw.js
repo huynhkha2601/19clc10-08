@@ -9,10 +9,11 @@ export default function(app) {
 
 
     app.get('/dashboard', (req, res) => {
-        res.render('main',{
-            layout: 'dashboard.css'
+        res.render('dashboard',{
+            layout: 'dashboard.hbs'
         });
     });
+
 
     app.use('/tours', ___routes_tours_route_js);
     app.use('/accounts', ___routes_accounts_route_js);

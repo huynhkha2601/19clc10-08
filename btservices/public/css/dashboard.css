@@ -1,0 +1,36 @@
+.background-color-blue {
+    background-color: #1C2260;
+    color: white;
+}
+
+.list-group{
+    border-radius: 0px;
+}
+
+.list-group-item{
+    background-color: #1C2260;
+    text-decoration: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: 7px #FFC312;
+    border-left-style: ridge;
+}
+
+.list-group-item:hover {
+    background-color: darkred;
+    text-decoration: none;
+    color: #fccc45 !important;
+    font-weight: bold;
+}
+
+.list-group-item:hover > a{
+    color: #FFC312 !important;
+}
+
+.my-custom-scrollbar {
+    height: 650px;
+}
+.table-wrapper-scroll-y {
+    display: block;
+}

@@ -44,21 +44,6 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 
-app.get('/dashboard/list', (req, res)=>{
-    res.render('vwAccounts/accounts-list', {
-        layout: 'dashboard.css'
-    })
-})
-
-
-app.get('/Product', (req, res) => {
-    res.render('./vwProducts/index',{layout : 'home.hbs'}) ;
-});
-
-app.get('/Product/detail', (req, res) => {
-    res.render('./vwProducts/details',{layout : 'home.hbs'}) ;
-});
-
 active_middleware_route(app);
 
 
