@@ -22,6 +22,12 @@ export default function (app) {
                 }
                 if (statements === '!=')
                     return (variable !== value);
+            },
+            splitName(val){
+                if (val === null)
+                    return "user";
+                let s = val.split(' ');
+                return s[s.length-1];
             }
         }
     }));

@@ -19,15 +19,4 @@ export default function(app){
 
 
 
-    // app.use( async function (req, res, next){
-    //     let categories = await categoriesModel.findAll();
-    //     for (let category of categories) {
-    //         let lst = await typesModel.findTypeByCat(category.cid);
-    //         category.list = lst;
-    //     }
-    //     res.locals.vwCategories = categories;
-    //     res.locals.vwCategories[0].isActive = true;
-    //     next();
-    // });
-
 }

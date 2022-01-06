@@ -1,73 +1,51 @@
 <div class="card">
-     <h3 class="card-header">
-         Tìm kiếm tour du lịch
-     </h3>
+    <h3 class="card-header">
+        Tìm kiếm tour du lịch
+    </h3>
     <div class="card-body d-flex justify-content-center">
-        <form class="form-inline mr-3">
-            <select id="" name="" class=" form-select mr-3" >
-                <option selected value="1">Ha Noi-Nha Trang</option>
+        <form method="post" class="form-inline ">
+            <select id="" name="" class=" form-select mr-3">
+                <option selected disabled>Địa điểm</option>
+                <option value="1">Ha Noi-Nha Trang</option>
                 <option value="0">Ho Chi Minh-Khánh Hoà</option>
             </select>
-            <button class="btn btn-primary " type="submit"><i class="fa fa-search" aria-hidden="true"></i>Tìm Kiếm</button>
-        </form>
-        <form class="form-inline mr-3">
-            <input class="form-control mr-3" type="search" placeholder="Theo Giá Tiền" aria-label="Search">
-            <button class="btn btn-primary " type="submit"><i class="fa fa-search" aria-hidden="true"></i>Tìm Kiếm</button>
-        </form>
-        <form class="form-inline">
             <input class="form-control mr-3" type="date" placeholder="Theo Ngày Khởi Hành" aria-label="Search">
-            <button class="btn btn-primary " type="submit"><i class="fa fa-search" aria-hidden="true"></i>Tìm Kiếm</button>
+            <input class="form-control mr-3" type="search" placeholder="Price" aria-label="Search">
+            <input class="form-control mr-3" type="date" placeholder="Theo Ngày Khởi Hành" aria-label="Search">
+            <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i>Tìm Kiếm
+            </button>
         </form>
     </div>
 </div>
-<div class="row">
+<div class="row mb-3">
     <div class="col-sm-4">
         <div class="card mt-3 vh-1000">
             <h4 class="card-header text-center">
                 Newest Tour
             </h4>
-            <div class="card-body">
-                <div class="card" style="width: 26rem;">
-                    <img src="./public/image/bg-02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5>Chuyến Đi Phú Quốc</h5>
-                        <div>Giá : 1000000 triệu</div>
-                        <div>Thời Gian : 3 ngày 2 đêm</div>
-                        <div>Công ty : A</div>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Details
-                        </a>
-                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            Booking
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="card" style="width: 26rem;">
-                    <img src="./public/image/bg-02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5>Chuyến Đi Phú Quốc</h5>
-                        <div>Giá : 1000000 triệu</div>
-                        <div>Thời Gian : 3 ngày 2 đêm</div>
-                        <div>Công ty : A</div>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Details
-                        </a>
-                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            Booking
-                        </a>
+            {{#each newestTours}}
+                <div class="card-body">
+                    <div class="card" style="width: auto;">
+                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>{{tourname}}</h5>
+                            <div>{{formatMoney price}}</div>
+                            <div>Time Start: {{formatDateTime datestart}}</div>
+                            <div>Time Start: {{formatDateTime dateend}}</div>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                Details
+                            </a>
+                            <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                Booking
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {{/each}}
             <div class="card-footer text-muted text-center">
                 <a class="btn btn-sm btn-outline-primary" href="#" role="button">
                     <i class="fa fa-angle-double-right"></i>
@@ -79,50 +57,31 @@
     <div class="col-sm-4">
         <div class="card mt-3 vh-1000">
             <h4 class="card-header text-center">
-                Hotest tour
+                Highest Price Tours
             </h4>
-            <div class="card-body">
-                <div class="card" style="width: 26rem;">
-                    <img src="./public/image/bg-02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5>Chuyến Đi Phú Quốc</h5>
-                        <div>Giá : 1000000 triệu</div>
-                        <div>Thời Gian : 3 ngày 2 đêm</div>
-                        <div>Công ty : A</div>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Details
-                        </a>
-                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            Booking
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="card" style="width: 26rem;">
-                    <img src="./public/image/bg-02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5>Chuyến Đi Phú Quốc</h5>
-                        <div>Giá : 1000000 triệu</div>
-                        <div>Thời Gian : 3 ngày 2 đêm</div>
-                        <div>Công ty : A</div>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Details
-                        </a>
-                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            Booking
-                        </a>
+            {{#each highestPriceTours}}
+                <div class="card-body">
+                    <div class="card" style="width: auto;">
+                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>{{tourname}}</h5>
+                            <div>{{formatMoney price}}</div>
+                            <div>Time Start: {{formatDateTime datestart}}</div>
+                            <div>Time Start: {{formatDateTime dateend}}</div>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                Details
+                            </a>
+                            <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                Booking
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {{/each}}
             <div class="card-footer text-muted text-center">
                 <a class="btn btn-sm btn-outline-primary" href="#" role="button">
                     <i class="fa fa-angle-double-right"></i>
@@ -134,50 +93,31 @@
     <div class="col-sm-4">
         <div class="card mt-3 vh-1000  align-item-center justify-content-center">
             <h4 class="card-header text-center">
-                Recently Tour
+                Upcoming Tour
             </h4>
-            <div class="card-body">
-                <div class="card" style="width: 26rem;">
-                    <img src="./public/image/bg-02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5>Chuyến Đi Phú Quốc</h5>
-                        <div>Giá : 1000000 triệu</div>
-                        <div>Thời Gian : 3 ngày 2 đêm</div>
-                        <div>Công ty : A</div>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Details
-                        </a>
-                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            Booking
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="card" style="width: 26rem;">
-                    <img src="./public/image/bg-02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5>Chuyến Đi Phú Quốc</h5>
-                        <div>Giá : 1000000 triệu</div>
-                        <div>Thời Gian : 3 ngày 2 đêm</div>
-                        <div>Công ty : A</div>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Details
-                        </a>
-                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            Booking
-                        </a>
+            {{#each upcomingTours}}
+                <div class="card-body">
+                    <div class="card" style="width: auto;">
+                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>{{tourname}}</h5>
+                            <div>{{formatMoney price}}</div>
+                            <div>Time Start: {{formatDateTime datestart}}</div>
+                            <div>Time Start: {{formatDateTime datestart}}</div>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                Details
+                            </a>
+                            <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                Booking
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {{/each}}
             <div class="card-footer text-muted text-center">
                 <a class="btn btn-sm btn-outline-primary" href="#" role="button">
                     <i class="fa fa-angle-double-right"></i>

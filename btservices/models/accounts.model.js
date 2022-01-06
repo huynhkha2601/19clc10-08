@@ -20,7 +20,7 @@ export default {
         return list[0];
     },
     async  checkAccount(username){
-        const list = await db('user').where('username',username);
+        const list = await db('user').where('username', username);
         if(list.length === 0)
             return false;
         return true;

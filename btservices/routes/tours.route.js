@@ -43,7 +43,7 @@ router.get('/edit/', async  function (req, res){
     });
 });
 
-router.post('/edit', function(req, res){
+router.post('/edit', async function(req, res){
 
     res.render('vwTours/edit', {
         layout: 'dashboard.hbs'

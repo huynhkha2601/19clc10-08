@@ -1,13 +1,20 @@
 import ___routes_accounts_route_js from "../routes/accounts.route.js";
 import ___routes_tours_route_js from "../routes/tours.route.js";
-import express from "express";
-import morgan from "morgan";
+import ___routes_locations_route_js from "../routes/locations.route.js";
+
+import toursModel from "../models/tours.model.js";
+
 
 export default function(app) {
 
 
-    app.get('/', (req, res) => {
-        res.render('main');
+    app.get('/', async (req, res) => {
+        let upcomingTours = await toursModel.findTop5UpcomingTours();
+        let newestTours = await toursModel.findTop5NewestTours();
+        let highestPriceTours = await toursModel.findTop5HighestPriceTours();
+        res.render('main', {
+            upcomingTours, newestTours, highestPriceTours
+        });
     });
 
 
@@ -17,12 +24,22 @@ export default function(app) {
         });
     });
 
+    app.use('/profile', (req, res) => {
+        res.render('vwProfiles/profile', {
+            layout: 'dashboard.hbs'
+        });
+    });
+
+    app.use('/changepw', (req, res) => {
+        res.render('vwProfiles/changepw', {
+            layout: 'dashboard.hbs'
+        });
+    });
+
 
     app.use('/tours', ___routes_tours_route_js);
     app.use('/', ___routes_accounts_route_js);
-
-
-
+    app.use('/locations', ___routes_locations_route_js);
 
     app.get('/err', function(req,res){
         throw new Error('Error!');

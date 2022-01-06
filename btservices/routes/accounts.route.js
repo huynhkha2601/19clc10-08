@@ -13,10 +13,14 @@ router.get('/login', function(req, res){
 });
 
 router.post('/login', async function(req, res){
-    let account = req.body;
-    let user = await accountsModel.findByUsername(account.username);
-    let flag = bcrypt.compareSync(account.password, user.password); // true
-    console.log(flag);
+    let user = await accountsModel.findByUsername(req.body.username);
+    console.log(req.body, user);
+    if(user === null){
+        res.redirect('/login');
+        return;
+    }
+
+    let flag = bcrypt.compareSync(req.body.password, user.password);
     if(flag){
         // session login.
         req.session.login = true;
@@ -40,24 +44,25 @@ router.get('/register', function(req, res){
 router.post('/register', async function(req, res){
     let account = req.body;
     if(account.password === account.repeat){
+        if (!await accountsModel.checkAccount(req.body.username)){
+            let salt = bcrypt.genSaltSync(10);
+            account.password = bcrypt.hashSync(account.password, salt);
+            delete account.repeat;
+            let ret = await accountsModel.add(account);
 
-        let salt = bcrypt.genSaltSync(req.body.password.length);
-        account.password = bcrypt.hashSync(account.password, salt);
-        delete account.repeat;
-        let ret = await accountsModel.add(account);
+            res.render('vwAccounts/register', {
+                layout: 'accounts.hbs',
+                notification_message: "Register successfully!",
+                notification: true, check: true
+            });
+        }else{
 
-        res.render('vwAccounts/register', {
-            layout: 'accounts.hbs',
-            notification_message: "Register successfully!",
-            notification: true, check: true
-        });
-
-    }else if (!await accountsModel.checkAccount(req.body.username)){
-        res.render('vwAccounts/register', {
-            layout: 'accounts.hbs',
-            err_message: "Username has been registered!",
-            err: true, check:true
-        });
+            res.render('vwAccounts/register', {
+                layout: 'accounts.hbs',
+                err_message: "Username has been registered!",
+                err: true, check:true
+            });
+        }
     }
     else {
         let err_message = "Password and repeat password does not match";
@@ -77,7 +82,6 @@ router.get('/forget', function(req, res){
 
 router.post('/forget',async function(req, res){
 
-
     let account = req.body;
     if(account.password === account.confirm){
 
@@ -95,6 +99,16 @@ router.post('/forget',async function(req, res){
     res.render('vwAccounts/forgetpw', {
         layout: 'accounts.hbs'
     });
+
 });
+
+router.get('/logout', function(req, res){
+    req.session.login = false;
+    req.session.account = null;
+    // req.session.cart = [];
+    res.redirect("/");
+})
+
+
 
 export default router;

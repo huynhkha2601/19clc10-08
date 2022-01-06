@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center">
+<div class="col-md-6">
+    <form method="post" class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Change Password</h4>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 mt-3"><label class="labels"></label>
+                <input type="text" class="form-control" placeholder=""
+                       value="{{accountAuth.userid}}" id="userid" name="userid" style="display: none;">
+                <input type="text" class="form-control" placeholder="Old Password"
+                      id="oldpassword" name="oldpassword">
+            </div>
+            <div class="col-md-12 mt-3"><label class="labels">New Password</label>
+                <input type="text" class="form-control" placeholder="New Password"
+                       id="password" name="password">
+
+            </div>
+            <div class="col-md-12 mt-3"><label class="labels">Confirm Password</label>
+                <input type="text" class="form-control" placeholder="Confirm Password"
+                       id="confirm" name="confirm">
+
+            </div>
+        </div>
+        <div class="mt-5 text-center">
+            <button class="btn btn-success profile-button" type="submit">Change Password</button>
+        </div>
+    </form>
+</div>
+
+</div>
