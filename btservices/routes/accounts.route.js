@@ -109,6 +109,17 @@ router.get('/logout', function(req, res){
     res.redirect("/");
 })
 
+router.get('/accounts/profile', function(req, res){
+    res.render('vwProfiles/profile', {
+        layout: 'dashboard.hbs'
+    });
+})
 
+router.get('/accounts/changepw', function(req, res){
+
+    res.render('vwProfiles/changepw', {
+        layout: 'dashboard.hbs'
+    });
+})
 
 export default router;

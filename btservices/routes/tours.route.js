@@ -18,8 +18,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 
-
-
 router.get('/add', async  function(req, res){
 
     res.render('vwTours/add', {
@@ -43,8 +41,10 @@ router.get('/edit/', async  function (req, res){
     });
 });
 
-router.post('/edit', async function(req, res){
-
+router.post('/edit', upload.single('file'),async function(req, res){
+    // let tour = await toursModel.patch(req.body);
+    console.log(req.body);
+    // console.log(tour);
     res.render('vwTours/edit', {
         layout: 'dashboard.hbs'
     });

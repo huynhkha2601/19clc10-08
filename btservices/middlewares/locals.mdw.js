@@ -1,3 +1,5 @@
+import ___models_locations_model_js from "../models/locations.model.js";
+
 
 export default function(app){
 
@@ -17,6 +19,12 @@ export default function(app){
         next();
     });
 
+    app.use( async function (req, res, next){
+        let locations = await ___models_locations_model_js.findAllLocations();
 
+        res.locals.locations = locations;
+        res.locals.locations[0].isActive = true;
+        next();
+    });
 
 }

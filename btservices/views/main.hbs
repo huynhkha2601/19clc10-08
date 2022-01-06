@@ -1,18 +1,20 @@
 <div class="card">
-    <h3 class="card-header">
-        Tìm kiếm tour du lịch
+    <h3 class="card-header pl-5">
+        Search Tours:
     </h3>
     <div class="card-body d-flex justify-content-center">
-        <form method="post" class="form-inline ">
-            <select id="" name="" class=" form-select mr-3">
+        <form method="post" class="form-inline">
+            <select id="" name="" class="form-control-lg form-select-lg mr-3" style="width: 13.5em">
                 <option selected disabled>Địa điểm</option>
-                <option value="1">Ha Noi-Nha Trang</option>
-                <option value="0">Ho Chi Minh-Khánh Hoà</option>
+<!--                {{#each a}}-->
+                    <option value="{{lid}}">{{lname}}</option>
+<!--                {{/each}}-->
             </select>
             <input class="form-control mr-3" type="date" placeholder="Theo Ngày Khởi Hành" aria-label="Search">
             <input class="form-control mr-3" type="search" placeholder="Price" aria-label="Search">
             <input class="form-control mr-3" type="date" placeholder="Theo Ngày Khởi Hành" aria-label="Search">
-            <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i>Tìm Kiếm
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>Tìm Kiếm
             </button>
         </form>
     </div>
@@ -20,25 +22,26 @@
 <div class="row mb-3">
     <div class="col-sm-4">
         <div class="card mt-3 vh-1000">
-            <h4 class="card-header text-center">
+            <h4 class="card-header text-center" style="background-color: #69c510">
                 Newest Tour
             </h4>
             {{#each newestTours}}
                 <div class="card-body">
                     <div class="card" style="width: auto;">
-                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="...">
+                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="..."
+                             style="height: 16.5em;">
                         <div class="card-body">
                             <h5>{{tourname}}</h5>
-                            <div>{{formatMoney price}}</div>
+                            <div class="text-danger font-weight-bold">Price: {{formatMoney price}}</div>
                             <div>Time Start: {{formatDateTime datestart}}</div>
                             <div>Time Start: {{formatDateTime dateend}}</div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                        <div class="card-footer text-muted text-right">
+                            <a class="btn btn-md btn-outline-primary" href="#" role="button">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 Details
                             </a>
-                            <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                            <a class="btn btn-md btn-outline-success" href="#" role="button">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Booking
                             </a>
@@ -47,7 +50,7 @@
                 </div>
             {{/each}}
             <div class="card-footer text-muted text-center">
-                <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                <a class="btn btn-lg btn-outline-primary" href="#" role="button">
                     <i class="fa fa-angle-double-right"></i>
                     View more
                 </a>
@@ -56,25 +59,26 @@
     </div>
     <div class="col-sm-4">
         <div class="card mt-3 vh-1000">
-            <h4 class="card-header text-center">
+            <h4 class="card-header text-center" style="background-color: #fccc45">
                 Highest Price Tours
             </h4>
             {{#each highestPriceTours}}
                 <div class="card-body">
                     <div class="card" style="width: auto;">
-                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="...">
+                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="..."
+                             style="height: 16.5em;">
                         <div class="card-body">
                             <h5>{{tourname}}</h5>
-                            <div>{{formatMoney price}}</div>
+                            <div class="text-danger font-weight-bold">Price: {{formatMoney price}}</div>
                             <div>Time Start: {{formatDateTime datestart}}</div>
                             <div>Time Start: {{formatDateTime dateend}}</div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                        <div class="card-footer text-muted text-right">
+                            <a class="btn btn-md btn-outline-primary" href="#" role="button">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 Details
                             </a>
-                            <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                            <a class="btn btn-md btn-outline-success" href="#" role="button">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Booking
                             </a>
@@ -83,7 +87,7 @@
                 </div>
             {{/each}}
             <div class="card-footer text-muted text-center">
-                <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                <a class="btn btn-lg btn-outline-primary" href="#" role="button">
                     <i class="fa fa-angle-double-right"></i>
                     View more
                 </a>
@@ -92,25 +96,26 @@
     </div>
     <div class="col-sm-4">
         <div class="card mt-3 vh-1000  align-item-center justify-content-center">
-            <h4 class="card-header text-center">
+            <h4 class="card-header text-center" style="background-color: aqua">
                 Upcoming Tour
             </h4>
             {{#each upcomingTours}}
                 <div class="card-body">
                     <div class="card" style="width: auto;">
-                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="...">
+                        <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="..."
+                             style="height: 16.5em;">
                         <div class="card-body">
                             <h5>{{tourname}}</h5>
-                            <div>{{formatMoney price}}</div>
+                            <div class="text-danger font-weight-bold">Price: {{formatMoney price}}</div>
                             <div>Time Start: {{formatDateTime datestart}}</div>
-                            <div>Time Start: {{formatDateTime datestart}}</div>
+                            <div>Time Start: {{formatDateTime dateend}}</div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                        <div class="card-footer text-muted text-right">
+                            <a class="btn btn-md btn-outline-primary" href="#" role="button">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 Details
                             </a>
-                            <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                            <a class="btn btn-md btn-outline-success" href="#" role="button">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Booking
                             </a>
@@ -119,7 +124,7 @@
                 </div>
             {{/each}}
             <div class="card-footer text-muted text-center">
-                <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                <a class="btn btn-lg btn-outline-primary" href="#" role="button">
                     <i class="fa fa-angle-double-right"></i>
                     View more
                 </a>
