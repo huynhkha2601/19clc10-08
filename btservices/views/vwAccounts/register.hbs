@@ -15,33 +15,54 @@
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="email" class="form-control" placeholder="Email" id="email" name="email">
+                        <input type="password" class="form-control" placeholder="password" id="password"
+                               name="password">
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="password" id="password" name="password">
+                        <input type="password" class="form-control" placeholder="repeat password" id="repeat"
+                               name="repeat">
                     </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    <div class="input-group form-group d-flex justify-content-center">
+                        <div class="form-check-inline mr-5">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="4" id="role" name="role" checked>
+                                <span class="text-white font-weight-bold">Invidual</span>
+                            </label>
                         </div>
-                        <input type="password" class="form-control" placeholder="repeat password" id="repeat" name="repeat">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input text-white font-weight-bold" value="3" id="role" name="role">
+                                <span class="text-white">Agency</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-group">
+                        {{#if err}}
+                            <div class="alert alert-danger" role="alert">
+                                {{err_message}}
+                            </div>
+                        {{/if}}
+                        {{#if notification}}
+                            <div class="alert alert-info" role="alert">
+                                {{notification_message}}
+                            </div>
+                        {{/if}}
+                    <div class="form-group" style="padding-right: 125px;
+                        {{#if check}} {{else}}margin-top: 80px;{{/if}}">
                         <input type="submit" value="Register" class="btn float-right login_btn">
                     </div>
                 </form>
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
-                    Already have an account?<a href="/accounts/login">Sign In</a>
+                    Already have an account?<a href="/login">Sign In</a>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href="/accounts/forget">Forgot your password?</a>
+                    <a href="/forget">Forgot your password?</a>
                 </div>
             </div>
         </div>

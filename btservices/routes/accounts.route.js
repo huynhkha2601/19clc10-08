@@ -19,6 +19,9 @@ router.post('/login', async function(req, res){
     console.log(flag);
     if(flag){
         // session login.
+        req.session.login = true;
+        req.session.account = user;
+
         res.redirect('/');
         return;
     }
@@ -30,24 +33,40 @@ router.post('/login', async function(req, res){
 
 router.get('/register', function(req, res){
     res.render('vwAccounts/register', {
-        layout: 'accounts.hbs'
+        layout: 'accounts.hbs', check:false
     });
 });
 
 router.post('/register', async function(req, res){
     let account = req.body;
     if(account.password === account.repeat){
+
         let salt = bcrypt.genSaltSync(req.body.password.length);
         account.password = bcrypt.hashSync(account.password, salt);
-
         delete account.repeat;
         let ret = await accountsModel.add(account);
 
+        res.render('vwAccounts/register', {
+            layout: 'accounts.hbs',
+            notification_message: "Register successfully!",
+            notification: true, check: true
+        });
+
+    }else if (!await accountsModel.checkAccount(req.body.username)){
+        res.render('vwAccounts/register', {
+            layout: 'accounts.hbs',
+            err_message: "Username has been registered!",
+            err: true, check:true
+        });
+    }
+    else {
+        let err_message = "Password and repeat password does not match";
+        res.render('vwAccounts/register', {
+            layout: 'accounts.hbs',
+            err_message, err: true, check:true
+        });
     }
 
-    res.render('vwAccounts/register', {
-        layout: 'accounts.hbs'
-    });
 });
 
 router.get('/forget', function(req, res){

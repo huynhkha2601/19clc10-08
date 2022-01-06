@@ -21,13 +21,13 @@ const upload = multer({storage});
 
 
 router.get('/add', async  function(req, res){
+
     res.render('vwTours/add', {
         layout: 'dashboard.hbs'
     });
 });
 
 router.post('/add',upload.single('file'),async function(req, res){
-    delete req.body.agencyid;
     let ret = await toursModel.add(req.body);
 
     res.render('vwTours/add', {

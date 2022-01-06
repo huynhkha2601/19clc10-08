@@ -1,6 +1,14 @@
+body{
+    margin-top: 0;
+}
+
 .background-color-blue {
     background-color: #1C2260;
     color: white;
+    width: 250px;
+    padding-left: 15px;
+    padding-right: 0;
+    flex: 0 0 20%;
 }
 
 .list-group{
@@ -28,9 +36,15 @@
     color: #FFC312 !important;
 }
 
-.my-custom-scrollbar {
-    height: 650px;
+
+.container-custom{
+    padding-left: 0;
+    margin-right: 0;
+    flex: 0 0 80%;
+    max-width: 80%;
 }
-.table-wrapper-scroll-y {
-    display: block;
+
+#table-wrapper {
+    height: 670px;
+    overflow-y: auto;
 }

@@ -1,12 +1,16 @@
 import express from 'express';
 import {engine} from "express-handlebars";
 import sections from "express-handlebars-sections";
-import morgan from 'morgan';
+
 import {dirname} from 'path';
 import {fileURLToPath} from 'url';
+
+
 import active_middleware_route from "./middlewares/routes.mdw.js";
-
-
+import active_middleware_locals from "./middlewares/locals.mdw.js";
+import active_middleware_sessions from "./middlewares/sessions.mdw.js";
+import active_middleware_view from "./middlewares/view.mdw.js";
+import morgan from "morgan";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -16,34 +20,12 @@ app.use('/public', express.static('public'));
 app.use(express.urlencoded({
     extended:true
 }));
-
 app.use(morgan('dev'));
-app.engine('hbs', engine({
-    defaultLayout: 'home.hbs',
-    helpers: {
-        section: sections(),
-        formatMoney(val) {
-            return val.toLocaleString('vi', {
-                style: 'currency', currency: 'VND'
-            });
-        },
-        formatDateTime(d) {
-            return d.toLocaleString('vi');
-        },
-        equals(variable, statements, value) {
-            if (statements === '=') {
-                return (variable === value);
-            }
-            if (statements === '!=')
-                return (variable !== value);
-        }
-    }
-}));
-
-app.set('view engine', 'hbs');
-app.set('views', './views');
 
 
+active_middleware_sessions(app);
+active_middleware_view(app);
+active_middleware_locals(app);
 active_middleware_route(app);
 
 

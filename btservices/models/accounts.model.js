@@ -19,6 +19,12 @@ export default {
             return null;
         return list[0];
     },
+    async  checkAccount(username){
+        const list = await db('user').where('username',username);
+        if(list.length === 0)
+            return false;
+        return true;
+    },
     add(entity){
         return db('user').insert(entity);
     },
