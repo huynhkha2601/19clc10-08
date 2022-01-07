@@ -2,19 +2,57 @@ import db from "../utils/database.js";
 
 export default {
 
-    async findAll(){
+    async findQuantityByLocations(lid){
+        let sl = await db('tour').where('datestart', '>=', new Date().toISOString())
+            .where('location', lid).count('* as sl');
+        return sl[0].sl;
+    },
+    findToursByLocationWithOffset(lid,offset){
+        return db('tour').where('datestart', '>=', new Date().toISOString())
+            .where('location', lid).limit(15).offset(offset);
+    },
+    async findQuantityWithKey(key){
+        let sl = await db('tour').where('datestart', '>=', new Date().toISOString())
+            .where('fullname', '%' + key + '%').count('* as sl');
+        return sl[0].sl;
+    },
+    findToursWithKeyWithOffset(key, offset){
+        return db('tour').where('datestart', '>=', new Date().toISOString())
+            .where('fullname', '%' + key + '%').limit(15).offset(offset);
+    },
+    async findQuantity(){
+        let sl = await db('tour').where('datestart', '>=', new Date().toISOString())
+            .count('* as sl');
+        console.log(sl);
+        return sl[0].sl;
+    },
+    findAll(){
         return db('tour');
     },
+    findNewestToursWithOffset(offset){
+        return db('tour').where('datestart', '>=', new Date().toISOString())
+            .orderBy('datepublished','desc').limit(15).offset(offset);
+    }
+    ,
+    findHighestPriceToursWithOffset(offset){
+        return db('tour').where('datestart', '>=', new Date().toISOString())
+            .orderBy('price','desc').limit(15).offset(offset);
+    },
+    findUpcomingToursWithOffset(offset){
+        return db('tour').where('datestart', '>=', new Date().toISOString())
+            .orderBy('datestart','asc').limit(15).offset(offset);
+    },
     findTop5HighestPriceTours(){
-        return db('tour').orderBy('price','desc').limit(5).offset(0);
+        return db('tour').where('datestart', '>=', new Date().toISOString())
+            .orderBy('price','desc').limit(5).offset(0);
     },
     findTop5UpcomingTours(){
         return db('tour').where('datestart', '>=', new Date().toISOString())
             .orderBy('datestart','asc').limit(5).offset(0);
     },
     findTop5NewestTours(){
-        return db('tour').where('datepublished', '>=', new Date().toISOString())
-            .orderBy('datestart','desc').limit(5).offset(0);
+        return db('tour').where('datestart', '>=', new Date().toISOString())
+            .orderBy('datepublished','desc').limit(5).offset(0);
     },
     async findNextTourID(){
         let tour = await db('tour').orderBy('tourid', 'desc').limit(1).select('tourid');
@@ -35,8 +73,8 @@ export default {
         return db('tour').where('tourid',id).del();
     },
     patch(entity){
-        const id = entity.userid;
-        delete entity.userid;
+        const id = entity.tourid;
+        delete entity.tourid;
         return db('tour').where('tourid',id).update(entity);
     }
 

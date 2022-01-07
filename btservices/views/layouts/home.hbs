@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="/public/css/home.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm fixed-top navbar-light" style="background: rgba(0,0,0,0.61)!important;">
@@ -35,7 +35,8 @@
             {{#if loginAuth}}
                 <div>
                     <div class="dropdown">
-                        <button class="btn dropdown-toggle" style="color: whitesmoke" type="button" id="dropdownMenuButton"
+                        <button class="btn dropdown-toggle" style="color: whitesmoke" type="button"
+                                id="dropdownMenuButton"
                                 data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                             <span class="font-weight-bold">Welcome, {{splitName accountAuth.fullname}}</span>
@@ -45,9 +46,9 @@
                              aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="/dashboard">
                                 <i class="fa fa-tasks" aria-hidden="true"></i>
-                                Dashboard
+                                Your Account
                             </a>
-                            <a class="dropdown-item" href="/accounts/profile">
+                            <a class="dropdown-item" href="/profile">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 View Profile</a>
                             <a class="dropdown-item" href="#"></a>
@@ -55,6 +56,7 @@
                             <a class="dropdown-item" href="/logout">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>Log out</a>
                         </div>
+
                     </div>
                 </div>
             {{/if}}
@@ -65,7 +67,7 @@
 <div class="img" style="height: 46.5em;">
     <img class="img-fluid vh-100 w-100" src="/public/image/bg-1.jpg" alt="main">
 </div>
-<div class="container-fluid mt-3" style="background-color: #ffe9e9">
+<div class="container-fluid pt-3" style="background-color: #ffe9e9">
     <div class="row d-flex justify-content-center">
         <div class="col-sm-10">
             {{{body}}}
@@ -73,6 +75,45 @@
     </div>
 </div>
 
+<div class="footer-dark">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>Booking Tour Services</h3>
+                    <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula
+                        rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
+                        in justo.</p>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                </div>
+                <div class="col item social">
+                    <a href="#">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="copyright">Booking Tour Services © 2021</p>
+        </div>
+    </footer>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"

@@ -1,0 +1,88 @@
+
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Detail:</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-6">
+                            <img class="img-fluid" src="/public/image/tours/{{tour.tourid}}.jpg" alt="image" width="100%">
+                        </div>
+                        <div class="col-sm-6">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col"><h2>{{tour.tourname}}</h2></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                    <td><h4>Title : {{tour.title}}</h4></td>
+                                </tr>
+                                <tr>
+                                    <td>Description: {{tour.description}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Địa Điểm : {{tour.location}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Price: {{formatMoney tour.price}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date Start: {{tour.datestart}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date Start: {{tour.datestart}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date Published: {{tour.dateend}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <h4>Rating: <span>4 sao</span></h4>
+                            <div class="text-center">
+                                <a class="btn btn-outline-success" href="#" role="button"><i class="fa fa-cart-plus"></i>
+                                    Booking</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid col-md-12">
+<!--        <div class="row">-->
+<!--            {{#each tours}}-->
+<!--                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="card" style="width: auto;">-->
+<!--                            <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="..."-->
+<!--                                 style="height: 16.5em;">-->
+<!--                            <div class="card-body">-->
+<!--                                <h3>{{tourname}}</h3>-->
+<!--                                <h5>Time Start: {{title}}</h5>-->
+<!--                                <div class="text-danger font-weight-bold">Price: {{formatMoney price}}</div>-->
+<!--                                <div>Time Start: {{formatDateTime datestart}}</div>-->
+<!--                                <div>Time Start: {{formatDateTime dateend}}</div>-->
+<!--                            </div>-->
+<!--                            <div class="card-footer text-muted text-right">-->
+<!--                                <a class="btn btn-md btn-outline-primary" href="#" role="button">-->
+<!--                                    <i class="fa fa-eye" aria-hidden="true"></i>-->
+<!--                                    Details-->
+<!--                                </a>-->
+<!--                                <a class="btn btn-md btn-outline-success" href="#" role="button">-->
+<!--                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>-->
+<!--                                    Booking-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            {{/each}}-->
+<!--        </div>-->
+    </div>
+</div>

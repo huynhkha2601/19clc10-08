@@ -1,6 +1,5 @@
 import ___models_locations_model_js from "../models/locations.model.js";
 
-
 export default function(app){
 
     app.use(async function (req, res, next){
@@ -13,8 +12,18 @@ export default function(app){
             req.session.account = null;
         }
 
+        if (typeof (req.session.cart) == 'undefined'){
+            req.session.cart = [];
+        }
+
+        if (typeof (req.session.recent) == 'undefined'){
+            req.session.recent = [];
+        }
+
         res.locals.loginAuth = req.session.login;
         res.locals.accountAuth = req.session.account;
+        res.locals.cartTours = req.session.cart;
+        res.locals.recentTours = req.session.recent;
 
         next();
     });
@@ -23,7 +32,8 @@ export default function(app){
         let locations = await ___models_locations_model_js.findAllLocations();
 
         res.locals.locations = locations;
-        res.locals.locations[0].isActive = true;
+        if(locations.length !== 0)
+            res.locals.locations[0].isActive = true;
         next();
     });
 

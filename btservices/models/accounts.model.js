@@ -1,4 +1,5 @@
 import db from "../utils/database.js";
+// import toursModel from "./tours.model.js";
 
 export default {
     async findByEmail(email){

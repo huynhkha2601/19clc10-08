@@ -14,14 +14,16 @@ export default function (app) {
                 });
             },
             formatDateTime(d) {
+                if (d === null)
+                    return "";
                 return d.toLocaleString('vi');
+            }            ,
+            equal(varr, val){
+                console.log(varr, val, typeof varr, typeof val,varr === val)
+                return varr === val;
             },
-            equals(variable, statements, value) {
-                if (statements === '=') {
-                    return (variable === value);
-                }
-                if (statements === '!=')
-                    return (variable !== value);
+            diff(varr, val){
+                return varr !== val;
             },
             splitName(val){
                 if (val === null)

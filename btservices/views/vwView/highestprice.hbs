@@ -4,9 +4,11 @@
     </h2>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                {{#each listPages}}
-                    <li class="page-item active"><a class="page-link" href="/tours/newest?page={{value}}">{{value}}</a></li>
-                {{/each}}
+                <ul class="pagination justify-content-center">
+                    {{#each listPages}}
+                        <li class="page-item active"><a class="page-link" href="/tours/highestprice?page={{value}}">{{value}}</a></li>
+                    {{/each}}
+                </ul>
             </ul>
         </nav>
 
@@ -41,9 +43,11 @@
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            {{#each listPages}}
-                <li class="page-item active"><a class="page-link" href="/tours/newest?page={{value}}">{{value}}</a></li>
-            {{/each}}
+            <ul class="pagination justify-content-center">
+                {{#each listPages}}
+                    <li class="page-item active"><a class="page-link" href="/tours/highestprice?page={{value}}">{{value}}</a></li>
+                {{/each}}
+            </ul>
         </ul>
     </nav>
 </div>

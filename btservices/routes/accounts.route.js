@@ -1,8 +1,12 @@
 import express from "express";
 import bcrypt from "bcryptjs";
+import multer from "multer";
 
 import accountsModel from "../models/accounts.model.js";
+import toursModel from "../models/tours.model.js";
 
+
+const dir = './public/image/accounts/';
 
 const router = express.Router();
 
@@ -105,21 +109,71 @@ router.post('/forget',async function(req, res){
 router.get('/logout', function(req, res){
     req.session.login = false;
     req.session.account = null;
-    // req.session.cart = [];
+    req.session.cart = [];
+    req.session.recent = [];
     res.redirect("/");
 })
 
-router.get('/accounts/profile', function(req, res){
+router.get('/accounts/profile/:uid',async function(req, res){
     res.render('vwProfiles/profile', {
         layout: 'dashboard.hbs'
     });
 })
 
-router.get('/accounts/changepw', function(req, res){
+router.post('/accounts/profile', function(req, res){
 
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb){
+            cb(null, dir);
+        },
+        filename: async (req, file, cb) => {
+            cb(null, req.session.account.userid + '.jpg');
+        }
+    });
+
+    const upload = multer({storage});
+
+    upload.single('avatar')(req, res, async function (err) {
+        let id = req.body.userid;
+
+        if (req.body.dob === '')
+            delete req.body.dob;
+
+        console.log(req.body);
+        res.redirect('/accounts/profile');
+    })
+
+})
+
+router.get('/accounts/changepw', function(req, res){
     res.render('vwProfiles/changepw', {
         layout: 'dashboard.hbs'
     });
+})
+
+router.post('/accounts/changepw', async function(req, res){
+
+    let account = req.body;
+    if(account.password === account.confirm){
+
+        let user = await accountsModel.findByID(account.userid);
+        account.userid = user.userid;
+
+        let salt = bcrypt.genSaltSync(req.body.password.length);
+        account.password = bcrypt.hashSync(account.password, salt);
+
+
+
+        delete account.oldpassword;
+        delete account.confirm;
+        let ret = await accountsModel.patch(account);
+
+    }else {
+        res.render('vwProfiles/changepw', {
+            layout: 'dashboard.hbs', err: "Confirm does not match to Password!"
+        });
+    }
+
 })
 
 export default router;
