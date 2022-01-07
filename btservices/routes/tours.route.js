@@ -89,12 +89,25 @@ router.get('/list', async function(req, res){
 });
 
 router.get('/detail/:tid',async function(req, res){
-    console.log(req.params.tid);
+
     let tour = await toursModel.findByID(req.params.tid);
-    console.log(tour);
+    req.session.recent.push(tour);
+
     res.render('vwTours/detail', {
         layout: 'tours.hbs', tour
     });
 });
+
+
+router.get('/book/:tid',async function(req, res){
+
+    let tour = await toursModel.findByID(req.params.tid);
+    req.session.cart.push(tour);
+
+    res.render('vwTours/detail', {
+        layout: 'tours.hbs', tour
+    });
+});
+
 
 export default router;

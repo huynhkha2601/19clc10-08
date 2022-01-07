@@ -12,8 +12,8 @@ export default function(app) {
     app.get('/', async (req, res) => {
         let upcomingTours = await toursModel.findTop5UpcomingTours();
         let newestTours = await toursModel.findTop5NewestTours();
-        console.log(newestTours)
         let highestPriceTours = await toursModel.findTop5HighestPriceTours();
+
         res.render('main', {
             upcomingTours, newestTours, highestPriceTours
         });
@@ -25,19 +25,6 @@ export default function(app) {
             layout: 'dashboard.hbs'
         });
     });
-
-    app.use('/profile', (req, res) => {
-        res.render('vwProfiles/profile', {
-            layout: 'dashboard.hbs'
-        });
-    });
-
-    app.use('/changepw', (req, res) => {
-        res.render('vwProfiles/changepw', {
-            layout: 'dashboard.hbs'
-        });
-    });
-
 
 
     app.use('/tours', ___routes_tours_route_js);

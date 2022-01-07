@@ -3,16 +3,16 @@
         Search Tours:
     </h3>
     <div class="card-body d-flex justify-content-center">
-        <form method="post" class="form-inline">
-            <select id="location" name="location" class="form-control form-select-md mr-3" style="width: 13.5em">
+        <form method="post" action="/tours/search"class="form-inline">
+            <select id="location" name="location" class="form-control form-select-md mr-2" style="width: 11em">
                 <option selected disabled>Location</option>
-<!--                {{#each locations}}-->
+                {{#each locations}}
                     <option value="{{lid}}">{{lname}}</option>
-<!--                {{/each}}-->
+                {{/each}}
             </select>
-            <input class="form-control mr-3" type="text" placeholder="Tour name" aria-label="Search">
-            <input class="form-control mr-3" type="search" placeholder="Price" aria-label="Search">
-            <input class="form-control mr-3" type="date" placeholder="By date start" aria-label="Search">
+            <input class="form-control mr-2"  type="text" placeholder="Tour name" id="tourname" name="tourname">
+            <input class="form-control mr-2"  type="number" placeholder="price" id="price" name="price">
+            <input class="form-control mr-2" type="date" placeholder="By date start" id="datestart" name="datestart">
             <button class="btn btn-primary font-weight-bold" type="submit">
                 <i class="fa fa-search mr-2" aria-hidden="true"></i>Search Tour
             </button>
@@ -37,7 +37,7 @@
                             <div>Time End: {{formatDateTime dateend}}</div>
                         </div>
                         <div class="card-footer text-muted text-right">
-                            <a class="btn btn-md btn-outline-primary" href="/tours/detail:{{tourid}}" role="button">
+                            <a class="btn btn-md btn-outline-primary" href="/tours/detail/{{tourid}}" role="button">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 Details
                             </a>
@@ -74,7 +74,7 @@
                             <div>Time End: {{formatDateTime dateend}}</div>
                         </div>
                         <div class="card-footer text-muted text-right">
-                            <a class="btn btn-md btn-outline-primary" href="/tours/detail:{{tourid}}" role="button">
+                            <a class="btn btn-md btn-outline-primary" href="/tours/detail/{{tourid}}" role="button">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                             Details
                             </a>
@@ -111,7 +111,7 @@
                             <div>Time End: {{formatDateTime dateend}}</div>
                         </div>
                         <div class="card-footer text-muted text-right">
-                            <a class="btn btn-md btn-outline-primary" href="/tours/detail:{{tourid}}" role="button">
+                            <a class="btn btn-md btn-outline-primary" href="/tours/detail/{{tourid}}" role="button">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 Details
                             </a>

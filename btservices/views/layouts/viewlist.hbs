@@ -71,7 +71,9 @@
                     Locations
                 </a>
                 {{#each locations}}
-                    <a href="/tours/byLoc/{{lid}}" class="list-group-item list-group-item-action {{#if isActive}}active{{/if}}">{{lname}}</a>
+                    <a href="/tours/byLoc/{{lid}} {{#if isActive}}
+                        selected
+                    {{/if}}" class="list-group-item list-group-item-action {{#if isActive}}active{{/if}}">{{lname}}</a>
                 {{/each}}
             </div>
         </div>

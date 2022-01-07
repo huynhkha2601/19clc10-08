@@ -4,11 +4,11 @@
     </h2>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            {{#each listPages}}
+                <li class="page-item">
+                    <a class="page-link" href="{{url}}">{{value}}</a>
+                </li>
+            {{/each}}
         </ul>
     </nav>
 
@@ -27,11 +27,11 @@
                             <div>Time Start: {{formatDateTime dateend}}</div>
                         </div>
                         <div class="card-footer text-muted text-right">
-                            <a class="btn btn-md btn-outline-primary" href="#" role="button">
+                            <a class="btn btn-md btn-outline-primary" href="/tours/detail/{{tourid}}" role="button">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 Details
                             </a>
-                            <a class="btn btn-md btn-outline-success" href="#" role="button">
+                            <a class="btn btn-md btn-outline-success" href="/tours/book/{{tourid}}" role="button">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Booking
                             </a>
@@ -43,11 +43,11 @@
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            {{#each listPages}}
+                <li class="page-item">
+                    <a class="page-link" href="{{url}}">{{value}}</a>
+                </li>
+            {{/each}}
         </ul>
     </nav>
 </div>

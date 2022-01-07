@@ -32,8 +32,7 @@ export default function(app){
         let locations = await ___models_locations_model_js.findAllLocations();
 
         res.locals.locations = locations;
-        if(locations.length !== 0)
-            res.locals.locations[0].isActive = true;
+
         next();
     });
 

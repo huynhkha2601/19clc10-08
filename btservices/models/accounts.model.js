@@ -37,4 +37,5 @@ export default {
         delete entity.userid;
         return db('user').where('userid',id).update(entity);
     }
+
 }

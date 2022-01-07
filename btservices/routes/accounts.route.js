@@ -114,13 +114,13 @@ router.get('/logout', function(req, res){
     res.redirect("/");
 })
 
-router.get('/accounts/profile/:uid',async function(req, res){
+router.get('/profile',async function(req, res){
     res.render('vwProfiles/profile', {
         layout: 'dashboard.hbs'
     });
 })
 
-router.post('/accounts/profile', function(req, res){
+router.post('/profile', function(req, res){
 
     const storage = multer.diskStorage({
         destination: function(req, file, cb){
@@ -145,13 +145,13 @@ router.post('/accounts/profile', function(req, res){
 
 })
 
-router.get('/accounts/changepw', function(req, res){
+router.get('/changepw', function(req, res){
     res.render('vwProfiles/changepw', {
         layout: 'dashboard.hbs'
     });
 })
 
-router.post('/accounts/changepw', async function(req, res){
+router.post('/changepw', async function(req, res){
 
     let account = req.body;
     if(account.password === account.confirm){
