@@ -17,10 +17,10 @@ export default function (app) {
                 if (d === null)
                     return "";
                 return d.toLocaleString('vi');
-            }            ,
+            },
             equal(varr, val){
                 console.log(varr, val, typeof varr, typeof val,varr === val)
-                return varr === val;
+                return parseInt(varr) === parseInt(val);
             },
             diff(varr, val){
                 return varr !== val;

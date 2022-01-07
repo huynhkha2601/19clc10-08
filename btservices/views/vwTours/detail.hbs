@@ -55,34 +55,32 @@
         </div>
     </div>
     <div class="container-fluid col-md-12">
-<!--        <div class="row">-->
-<!--            {{#each tours}}-->
-<!--                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
-<!--                    <div class="card-body">-->
-<!--                        <div class="card" style="width: auto;">-->
-<!--                            <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="..."-->
-<!--                                 style="height: 16.5em;">-->
-<!--                            <div class="card-body">-->
-<!--                                <h3>{{tourname}}</h3>-->
-<!--                                <h5>Time Start: {{title}}</h5>-->
-<!--                                <div class="text-danger font-weight-bold">Price: {{formatMoney price}}</div>-->
-<!--                                <div>Time Start: {{formatDateTime datestart}}</div>-->
-<!--                                <div>Time Start: {{formatDateTime dateend}}</div>-->
-<!--                            </div>-->
-<!--                            <div class="card-footer text-muted text-right">-->
-<!--                                <a class="btn btn-md btn-outline-primary" href="#" role="button">-->
-<!--                                    <i class="fa fa-eye" aria-hidden="true"></i>-->
-<!--                                    Details-->
-<!--                                </a>-->
-<!--                                <a class="btn btn-md btn-outline-success" href="#" role="button">-->
-<!--                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>-->
-<!--                                    Booking-->
-<!--                                </a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            {{/each}}-->
-<!--        </div>-->
+        <h2 class="mt-5">Recent Tours:</h2>
+        <div class="row d-flex justify-content-center">
+            {{#each recentTours}}
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                    <div class="card-body">
+                        <div class="card" style="width: auto;">
+                            <img src="/public/image/tours/{{tourid}}.jpg" class="card-img-top" alt="..."
+                                 style="height: 16.5em;">
+                            <div class="card-body">
+                                <h4 style="height: 3em;">{{tourname}}</h4>
+                                <div class="text-danger font-weight-bold">Price: {{formatMoney price}}</div>
+                            </div>
+                            <div class="card-footer text-muted text-right">
+                                <a class="btn btn-md btn-outline-primary" href="/tours/detail/{{tourid}}" role="button">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    Details
+                                </a>
+                                <a class="btn btn-md btn-outline-success" href="/tours/book/{{tourid}}" role="button">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Booking
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
     </div>
 </div>

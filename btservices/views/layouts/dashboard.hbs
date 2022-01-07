@@ -85,27 +85,52 @@
                 </div>
             </div>
         </div>
-        <div class="w-100 border-bottom">
-            <a class="btn text-white w-100 text-left" data-toggle="collapse" href="#management"
-               role="button" aria-controls="management" aria-expanded="false">
-                <i class="fa fa-fighter-jet pt-2 ml-3 mr-2" aria-hidden="true"></i>Account Management</a>
-            <div class="col w-100">
-                <div id="management">
-                    <ul class="list-group mt-3 mb-3">
-                        <li class="list-group-item">
-                            <i class="ml-3 fa fa-eye" aria-hidden="true"></i>
-                            <a class="text-white text-decoration-none" href="/admin/accounts/list/">List Accounts
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <i class="ml-3  fa fa-plus" aria-hidden="true"></i>
-                            <a class="text-white text-decoration-none" href="/admin/accounts/add">Add Manager
-                            </a>
-                        </li>
-                    </ul>
+        {{#if (equal accountAuth.role 1)}}
+            <div class="w-100 border-bottom">
+                <a class="btn text-white w-100 text-left" data-toggle="collapse" href="#account"
+                   role="button" aria-controls="management" aria-expanded="false">
+                    <i class="fa fa-user-circle pt-2 ml-3 mr-2" aria-hidden="true"></i>Account Management</a>
+                <div class="col w-100">
+                    <div id="account">
+                        <ul class="list-group mt-3 mb-3">
+                            <li class="list-group-item">
+                                <i class="ml-3 fa fa-eye" aria-hidden="true"></i>
+                                <a class="text-white text-decoration-none" href="/admin/accounts/list/">List Accounts
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="ml-3  fa fa-plus" aria-hidden="true"></i>
+                                <a class="text-white text-decoration-none" href="/admin/accounts/add">Add Manager
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="w-100 border-bottom">
+                <a class="btn text-white w-100 text-left" data-toggle="collapse" href="#location"
+                   role="button" aria-controls="location" aria-expanded="false">
+                    <i class="fa fa-location-arrow pt-2 ml-3 mr-2" aria-hidden="true"></i>Locations Management</a>
+                <div class="col w-100">
+                    <div id="location">
+                        <ul class="list-group mt-3 mb-3">
+                            <li class="list-group-item">
+                                <i class="ml-3 fa fa-plus" aria-hidden="true"></i>
+                                <a class="text-white text-decoration-none" href="/locations/add/">Add Location
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="ml-3  fa fa-list-ul" aria-hidden="true"></i>
+                                <a class="text-white text-decoration-none" href="/locations/list">List Locations
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+
+
         <div class="w-100 border-bottom">
             <a class="btn text-white w-100 text-left" data-toggle="collapse" href="#management"
                role="button" aria-controls="management" aria-expanded="false">
@@ -127,49 +152,32 @@
                 </div>
             </div>
         </div>
-        <div class="w-100 border-bottom">
-            <a class="btn text-white w-100 text-left" data-toggle="collapse" href="#location"
-               role="button" aria-controls="location" aria-expanded="false">
-                <i class="fa fa-location-arrow pt-2 ml-3 mr-2" aria-hidden="true"></i>Locations Management</a>
-            <div class="col w-100">
-                <div id="location">
-                    <ul class="list-group mt-3 mb-3">
-                        <li class="list-group-item">
-                            <i class="ml-3 fa fa-plus" aria-hidden="true"></i>
-                            <a class="text-white text-decoration-none" href="/locations/add/">Add Location
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <i class="ml-3  fa fa-list-ul" aria-hidden="true"></i>
-                            <a class="text-white text-decoration-none" href="/locations/list">List Locations
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="w-100 border-bottom">
-            <a class="btn text-white w-100 text-left" data-toggle="collapse" href="#statistic"
-               role="button" aria-controls="statistic" aria-expanded="false">
-                <i class="fa fa-th-list pt-2 ml-3 mr-2" aria-hidden="true"></i>Statistic Revenue</a>
-            <div class="col-sm w-100">
-                <div id="statistic">
-                    <ul class="list-group mt-3 mb-3">
-                        <li class="list-group-item">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            <a class="text-white text-decoration-none" href="/profile/">View List Tour
-                            </a>
+        {{#if (diff accountAuth.role 4)}}
+            <div class="w-100 border-bottom">
+                <a class="btn text-white w-100 text-left" data-toggle="collapse" href="#statistic"
+                   role="button" aria-controls="statistic" aria-expanded="false">
+                    <i class="fa fa-th-list pt-2 ml-3 mr-2" aria-hidden="true"></i>Statistic Revenue</a>
+                <div class="col-sm w-100">
+                    <div id="statistic">
+                        <ul class="list-group mt-3 mb-3">
+                            <li class="list-group-item">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                <a class="text-white text-decoration-none" href="#">Total Revenue
+                                </a>
 
-                        </li>
-                        <li class="list-group-item">
-                            <i class=" fa fa-plus" aria-hidden="true"></i>
-                            <a class="text-white text-decoration-none" href="/logout">Posting Tour
-                            </a>
-                        </li>
-                    </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <i class=" fa fa-plus" aria-hidden="true"></i>
+                                <a class="text-white text-decoration-none" href="#">Total Accounts
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        {{/if}}
+
+
     </div>
     <div class="container-custom col-md-9">
         {{{body}}}

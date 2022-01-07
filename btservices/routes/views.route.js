@@ -41,7 +41,7 @@ router.get('/highestprice', async (req, res) => {
         pageNum++;
     let listPages = listPage.getListPage(curPage, pageNum);
     let tours = await toursModel.findHighestPriceToursWithOffset((curPage - 1) * limit);
-    console.log(listPages);
+
     res.render('vwView/highestprice', {
         layout: 'viewlist.hbs', tours, listPages
     });
@@ -66,6 +66,7 @@ router.get('/upcoming', async (req, res) => {
     res.render('vwView/upcoming', {
         layout: 'viewlist.hbs', tours, listPages
     });
+
 });
 
 router.get('/byLoc/:id', async (req, res) => {
@@ -86,11 +87,9 @@ router.get('/byLoc/:id', async (req, res) => {
         pageNum++;
     let listPages = listPage.getListSearchByLocPage(curPage, pageNum,req.params.id);
 
-    console.log(listPages)
     let tours = await toursModel.findToursByLocationWithOffset(req.params.id,(curPage - 1) * limit);
 
     let url = req.url.split("?")[0];
-    console.log(url);
     res.render('vwView/byLoc', {
         layout: 'viewlist.hbs', tours, url ,listPages
     });
@@ -117,6 +116,7 @@ router.get('/bySearch/:page', async (req, res) => {
     res.render('vwView/bySearch', {
         layout: 'viewlist.hbs', tours, url,listPages
     });
+
 });
 
 
@@ -135,7 +135,7 @@ router.get('/bySearch/byTourname/:page', async (req, res) => {
     if (quantity % limit > 0)
         pageNum++;
     let listPages = listPage.getListSearchByNamePage(curPage, pageNum, req.query.key);
-    console.log(listPages);
+
     let tours = await toursModel.findToursByNameWithOffset(req.query.key,(curPage - 1) * limit);
     let url = req.url.split("?")[0];
     res.render('vwView/bySearch', {
@@ -158,7 +158,6 @@ router.get('/bySearch/byPrice/:page', async (req, res) => {
         pageNum++;
     let listPages = listPage.getListSearchByPricePage(curPage, pageNum, req.query.key);
     let tours = await toursModel.findToursByPriceWithOffset(req.query.key,(curPage - 1) * limit);
-    console.log(listPages);
 
     let url = req.url.split("?")[0];
     res.render('vwView/bySearch', {
@@ -182,7 +181,6 @@ router.get('/bySearch/byDate/:page', async (req, res) => {
     let listPages = listPage.getListSearchByDatePage(curPage, pageNum, req.query.key);
     let tours = await toursModel.findToursByDateWithOffset(req.query.key,(curPage - 1) * limit);
     let url = req.url.split("?")[0];
-    console.log(listPages);
 
     res.render('vwView/bySearch', {
         layout: 'viewlist.hbs', tours,url, listPages

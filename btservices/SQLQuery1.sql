@@ -23,7 +23,7 @@ create table register(
     rId      bigint not null primary key AUTO_INCREMENT,
     userId  bigint not null,
     tourId bigint not null,
-    dateRegister  bigint not null,
+    dateRegister  date default current_timestamp,
     quantity int default 1,
     price float not null
 );

@@ -2,7 +2,7 @@ import express from "express";
 import multer from "multer";
 import toursModel from "../models/tours.model.js";
 import locationsModel from "../models/locations.model.js";
-
+import registersModel from "../models/registers.model.js";
 
 const dir = './public/image/tours/';
 const router = express.Router();
@@ -81,20 +81,41 @@ router.get('/del', function(req, res){
 });
 
 router.get('/list', async function(req, res){
-    let tours = await toursModel.findAll();
+    let tours = await toursModel.findToursByUserID(req.session.account.userid);
+    console.log(tours)
     res.render('vwTours/list-tours', {
         tours,
         layout: 'dashboard.hbs'
     });
 });
 
+router.get('/list-register', async function(req, res){
+    let tours = await toursModel.findToursByUserID(req.session.account.userid);
+    console.log(tours)
+    res.render('vwTours/list-tours', {
+        tours,
+        layout: 'dashboard.hbs'
+    });
+});
+
+
 router.get('/detail/:tid',async function(req, res){
+    let recentTours = [];
+    if (req.session.recent === undefined){
+
+    }else {
+        let i =  req.session.recent.length;
+        for (let j = i-1; j >= 0 ; j--) {
+            if (recentTours.length < 5)
+                recentTours.push(req.session.recent[j]);
+        }
+    }
 
     let tour = await toursModel.findByID(req.params.tid);
     req.session.recent.push(tour);
-
+    console.log(req.session.recent, recentTours)
     res.render('vwTours/detail', {
-        layout: 'tours.hbs', tour
+        layout: 'tours.hbs', tour, recentTours
     });
 });
 
@@ -102,11 +123,18 @@ router.get('/detail/:tid',async function(req, res){
 router.get('/book/:tid',async function(req, res){
 
     let tour = await toursModel.findByID(req.params.tid);
-    req.session.cart.push(tour);
+    console.log(tour);
+    let entity = {};
+    entity.tourId = req.params.tid;
+    entity.userId = req.session.account.userid;
+    entity.quantity = 1;
+    entity.price = tour.price;
+    // req.session.cart.push(tour);
+    // console.log(entity);
 
-    res.render('vwTours/detail', {
-        layout: 'tours.hbs', tour
-    });
+    let ret = await registersModel.add(entity);
+
+    res.redirect('/');
 });
 
 

@@ -55,6 +55,9 @@ export default {
     findAll(){
         return db('tour');
     },
+    async findToursByUserID(agencyid){
+        return db('tour').where('agencyid', agencyid);
+    },
     findNewestToursWithOffset(offset){
         return db('tour').where('datestart', '>=', new Date().toISOString())
             .orderBy('datepublished','desc').limit(15).offset(offset);
