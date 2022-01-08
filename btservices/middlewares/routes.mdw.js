@@ -32,20 +32,20 @@ export default function(app) {
     app.use('/tours', ___routes_views_route_js);
     app.use('/locations', ___routes_locations_route_js);
 
-    // app.get('/err', function(req,res){
-    //     throw new Error('Error!');
-    // })
+    app.get('/err', function(req,res){
+        throw new Error('Error!');
+    })
 
-    // app.use(function (req,res, next){
-    //     res.render('404', {
-    //         layout:false
-    //     })
-    // });
-    //
-    // app.use(function (err, req,res, next){
-    //     res.render('500', {
-    //         layout:false
-    //     })
-    // });
+    app.use(function (req,res, next){
+        res.render('404', {
+            layout:false
+        })
+    });
+
+    app.use(function (err, req,res, next){
+        res.render('500', {
+            layout:false
+        })
+    });
 
 }

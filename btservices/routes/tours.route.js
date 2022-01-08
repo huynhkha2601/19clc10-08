@@ -76,8 +76,9 @@ router.post('/edit',async function(req, res){
     })
 });
 
-router.get('/del', function(req, res){
-    res.redirect('/tours/del');
+router.get('/del/:tourid',async function(req, res){
+    let ret = await toursModel.del(req.params.tourid);
+    res.redirect('/tours/list');
 });
 
 router.get('/list', async function(req, res){
