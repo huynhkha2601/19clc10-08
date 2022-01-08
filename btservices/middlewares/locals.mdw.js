@@ -22,6 +22,8 @@ export default function(app){
 
         res.locals.loginAuth = req.session.login;
         res.locals.accountAuth = req.session.account;
+        if (req.session.account !== null && req.session.account === undefined)
+            res.locals.accountRole = req.session.account.role;
         res.locals.cartTours = req.session.cart;
         res.locals.recentTours = req.session.recent;
 

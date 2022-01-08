@@ -23,17 +23,17 @@ create table register(
     rId      bigint not null primary key AUTO_INCREMENT,
     userId  bigint not null,
     tourId bigint not null,
-    dateRegister  date default current_timestamp,
+    dateRegister  datetime default current_timestamp,
     quantity int default 1,
     price float not null
 );
 
 drop table if exists payment;
 create table payment(
-                        paymentid bigint not null  primary key AUTO_INCREMENT,
-                        registerid bigint not null,
-                        type char(1) not null,
-                        totalmoney float not null
+    paymentid bigint not null  primary key AUTO_INCREMENT,
+    registerid bigint not null,
+    type char(1) not null,
+    totalmoney float not null
 );
 
 drop table if exists tour;

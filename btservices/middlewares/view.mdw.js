@@ -25,6 +25,16 @@ export default function (app) {
             diff(varr, val){
                 return varr !== val;
             },
+            isAgency(val){
+                return parseInt(val) === 3;
+            },
+            isCustomer(val){
+                return parseInt(val) === 4;
+            },
+            isAdmin(val){
+                return parseInt(val) === 1;
+            }
+            ,
             splitName(val){
                 if (val === null)
                     return "user";

@@ -90,14 +90,29 @@ router.get('/list', async function(req, res){
     });
 });
 
-router.get('/list-register', async function(req, res){
-    let tours = await toursModel.findToursByUserID(req.session.account.userid);
-    console.log(tours)
-    res.render('vwTours/list-tours', {
-        tours,
+router.get('/list-register', async function(req, res, err){
+
+    let registers = await registersModel.findByUserID(req.session.account.userid);
+    let total = 0;
+    for (const register of registers) {
+        register.total = register.quantity * register.price;
+        let tour = await toursModel.findByID(register.tourId);
+        total += register.quantity * register.price;
+
+        register.tourname = tour.tourname;
+    }
+
+    res.render('vwTours/register', {
+        registers, total,
         layout: 'dashboard.hbs'
     });
 });
+
+router.get('/cancel/:rId', async function(req, res, err){
+    let ret = await registersModel.del(req.params.rId);
+    res.redirect('/tours/list-register')
+});
+
 
 
 router.get('/detail/:tid',async function(req, res){
@@ -114,7 +129,7 @@ router.get('/detail/:tid',async function(req, res){
 
     let tour = await toursModel.findByID(req.params.tid);
     req.session.recent.push(tour);
-    console.log(req.session.recent, recentTours)
+    // console.log(req.session.recent, recentTours)
     res.render('vwTours/detail', {
         layout: 'tours.hbs', tour, recentTours
     });
@@ -132,6 +147,9 @@ router.get('/book/:tid',async function(req, res){
     entity.price = tour.price;
     // req.session.cart.push(tour);
     // console.log(entity);
+
+    tour = await toursModel.findByID(req.params.tid);
+    req.session.cart.push(tour);
 
     let ret = await registersModel.add(entity);
 
